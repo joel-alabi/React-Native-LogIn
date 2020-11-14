@@ -1,119 +1,27 @@
-import React, { Component } from "react";
-import {StyleSheet,Text,TextInput,TouchableOpacity,ScrollView,View,} from "react-native";
+import { StatusBar } from "expo-status-bar";
+import React from "react";
+import { StyleSheet, View } from "react-native";
+import Contact from "./components/Contact";
+import LoginScreen from "./LoginScreen";
+import ContactsList from "./ContactList";
 
-class LoginScreen extends Component {
-    
-    constructor(props) {
-        super(props);
-        this.state={
-            username:"",
-            password:""
-        }
-    }
-    
+export default function App() {
+  return (
+    <View style={styles.container}>
+      {/*  <LoginScreen />*/}
 
-  render() {
-    return (
-      <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
-        <View style={styles.loginTextContainer}>
-          <Text style={styles.loginText}>Log In</Text>
-        </View>
+     <ContactsList />
 
-        <View>
-          <TextInput
-            style={styles.input}
-            placeholder="Username"
-            placeholderTextColor="#aaaaaa"
-            value={this.state.username}
-            onChangeText={(username)=>{
-            this.setState({username})
-            }}
-          />
-          <TextInput
-            style={styles.input}
-            placeholder="Password"
-            placeholderTextColor="#aaaaaa"
-            secureTextEntry={true}
-            value={this.state.password}
-            onChangeText={(password)=>{
-                this.setState({password})
-            }}
-          />
-          <Text style={styles.forgotPassword}>Forgot password?</Text>
-        </View>
-
-        <View>
-          <TouchableOpacity style={styles.button}>
-            <Text style={styles.buttonText}>Log In</Text>
-          </TouchableOpacity>
-        </View>
-
-        <View style={styles.noAccountContainer}>
-          <Text style={styles.noAccountText}>Don't have an account?</Text>
-          <Text style={styles.signUpText}>Sign up</Text>
-        </View>
-      </ScrollView>
-    );
-  }
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
   container: {
-    margin: 55,
-    marginTop: 120,
-  },
-
-  loginText: {
-    fontSize: 50,
-    color: "#b617eb",
-  },
-
-  loginTextContainer: {
-    marginBottom: 30
-  },
-
-  input: {
-    borderBottomWidth: 2,
-    borderBottomColor: "#58269e",
-    fontSize: 20,
-    height: 20,
-    marginTop:70
-  },
-
-  forgotPassword: {
-    alignSelf: "flex-end",
-    marginVertical: 2.5,
-    color: "#02a6cf",
-  },
-
-  button: {
-    height: 50,
-    backgroundColor: "#b617eb",
-    justifyContent: "center",
-    alignItems: "center",
-    borderRadius: 10,
-    marginVertical: 80,
-  },
-
-  buttonText: {
-    color: "white",
-    fontSize: 27,
-  },
-
-  noAccountContainer: {
-    flexDirection: "row",
-    justifyContent: "center",
-  },
-
-  noAccountText: {
-    marginRight: 10,
-    fontSize: 16,
-  },
-
-  signUpText: {
-    fontSize: 16,
-    color: "#b617eb",
+    marginTop:10
+    //flex: 1,
+     //backgroundColor: '#fff',
+     //alignItems: 'center',
+     //justifyContent: 'center',
   },
 });
-
-export default LoginScreen;
