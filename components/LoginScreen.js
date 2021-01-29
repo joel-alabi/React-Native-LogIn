@@ -1,68 +1,60 @@
 import React, { Component } from "react";
 import {StyleSheet,Text,TextInput,TouchableOpacity,ScrollView,View,} from "react-native";
+import {connect} from "react-redux";
 
 class LoginScreen extends Component {
-    
-    constructor(props) {
-        super(props);
-        this.state={
-            email:"",
-            password:""
-        }
-    }
-    
-
-  render() {const {navigation} = this.props
+  
+  render() {
+    const {navigation} = this.props
     return (
+
       <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
         <View style={styles.loginTextContainer}>
           <Text style={styles.loginText}>Log In</Text>
         </View>
-
+ 
         <View>
-          <TextInput
+        <TextInput
             style={styles.input}
-            placeholder="Username"
+            placeholder="Email"
             placeholderTextColor="#aaaaaa"
-            value={this.state.email}
-            onChangeText={(email)=>{
-            this.setState({email})
-            }}
+           
+            
           />
           <TextInput
             style={styles.input}
             placeholder="Password"
             placeholderTextColor="#aaaaaa"
-            secureTextEntry={true}
-            value={this.state.password}
-            onChangeText={(password)=>{
-                this.setState({password})
-            }}
+           
+           
+            
           />
-          <Text style={styles.forgotPassword} onPress={() => { navigation.navigate("SignIn") }}>Forgot password?</Text>
+          <Text style={styles.forgotPassword} onPress={() => {navigation.navigate("SignIn") }}>Forgot password?</Text>
         </View>
 
         <View>
-          <TouchableOpacity style={styles.button} onPress={() => { navigation.navigate("ContactsList") }}>
+          <TouchableOpacity style={styles.button} onPress={() => {navigation.navigate("SignIn") }}>
             <Text style={styles.buttonText}>Log In</Text>
           </TouchableOpacity>
         </View>
 
         <View style={styles.noAccountContainer}>
           <Text style={styles.noAccountText}>Don't have an account?</Text>
-          <Text style={styles.signUpText} onPress={() => { navigation.navigate("SignIn") }}>Sign up</Text>
+          <Text style={styles.signUpText}>Sign up</Text>
         </View>
       </ScrollView>
-    );
+    )
   }
 }
+
+
 
 const styles = StyleSheet.create({
   container: {
     margin: 55,
     marginTop: 100,
   },
-
+ 
   loginText: {
     fontSize: 50,
     color: "#b617eb",
@@ -82,13 +74,11 @@ const styles = StyleSheet.create({
     marginTop:20,
     color:'black'
   },
-
   forgotPassword: {
     alignSelf: "flex-end",
     marginVertical: 2.5,
     color: "#02a6cf",
   },
-
   button: {
     height: 50,
     backgroundColor: "#b617eb",
@@ -97,26 +87,21 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginVertical: 50,
   },
-
   buttonText: {
     color: "white",
     fontSize: 27,
   },
-
   noAccountContainer: {
     flexDirection: "row",
     justifyContent: "center",
   },
-
   noAccountText: {
-    marginRight: 10,
+    marginRight: 10, 
     fontSize: 16,
   },
-
   signUpText: {
     fontSize: 16,
     color: "#b617eb",
   },
-});
-
-export default LoginScreen;
+});  
+export default connect()(LoginScreen); 

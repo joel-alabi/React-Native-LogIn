@@ -1,16 +1,9 @@
 import React, { Component } from 'react'
 import { View,Text,StyleSheet,TextInput,TouchableOpacity, ScrollView } from 'react-native';
+import {connect} from 'react-redux'
 
 class SignIn extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-          username: "",
-          email: "",
-          password: "",
-          passwordagain:""
-        };
-      }
+   
     render() {const {navigation} = this.props
         return (
             <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
@@ -23,36 +16,28 @@ class SignIn extends Component {
             style={styles.input}
             placeholder="Email"
             placeholderTextColor="#aaaaaa"
-            value={this.state.email}
-            onChangeText={(email) => {
-              this.setState({ email });
-            }}
+            
+            
           />
           <TextInput
             style={styles.input}
             placeholder="Password"
             placeholderTextColor="#aaaaaa"
-            secureTextEntry={true}
-            value={this.state.password}
-            onChangeText={(password) => {
-              this.setState({ password });
-            }}
+            
+           
           />
           <TextInput
             style={styles.input}
             placeholder="Confirm password"
             placeholderTextColor="#aaaaaa"
-            secureTextEntry={true}
-            value={this.state.passwordagain}
-            onChangeText={(passwordagain) => {
-              this.setState({ passwordagain });
-            }}
+           
+            
           />
          <Text style={styles.forgotPassword}>Forgot password?</Text> 
         </View>
 
         <View>
-          <TouchableOpacity style={styles.button} onPress={() => { navigation.navigate("LoginScreen") }}>
+          <TouchableOpacity style={styles.button} onPress={() => { navigation.navigate("ContactsList") }}>
             <Text style={styles.buttonText}>Sign Up</Text>
           </TouchableOpacity>
         </View>
@@ -67,7 +52,7 @@ class SignIn extends Component {
         )
     }
 }
-export default SignIn; 
+
 
 const styles = StyleSheet.create({
     container: {
@@ -129,4 +114,4 @@ const styles = StyleSheet.create({
         color: "#58269e",
       },
   });
-  
+  export default connect()(SignIn); 
