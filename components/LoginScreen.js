@@ -6,13 +6,13 @@ class LoginScreen extends Component {
     constructor(props) {
         super(props);
         this.state={
-            username:"",
+            email:"",
             password:""
         }
     }
     
 
-  render() {
+  render() {const {navigation} = this.props
     return (
       <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
         <View style={styles.loginTextContainer}>
@@ -24,9 +24,9 @@ class LoginScreen extends Component {
             style={styles.input}
             placeholder="Username"
             placeholderTextColor="#aaaaaa"
-            value={this.state.username}
-            onChangeText={(username)=>{
-            this.setState({username})
+            value={this.state.email}
+            onChangeText={(email)=>{
+            this.setState({email})
             }}
           />
           <TextInput
@@ -39,18 +39,18 @@ class LoginScreen extends Component {
                 this.setState({password})
             }}
           />
-          <Text style={styles.forgotPassword}>Forgot password?</Text>
+          <Text style={styles.forgotPassword} onPress={() => { navigation.navigate("SignIn") }}>Forgot password?</Text>
         </View>
 
         <View>
-          <TouchableOpacity style={styles.button}>
+          <TouchableOpacity style={styles.button} onPress={() => { navigation.navigate("ContactsList") }}>
             <Text style={styles.buttonText}>Log In</Text>
           </TouchableOpacity>
         </View>
 
         <View style={styles.noAccountContainer}>
           <Text style={styles.noAccountText}>Don't have an account?</Text>
-          <Text style={styles.signUpText}>Sign up</Text>
+          <Text style={styles.signUpText} onPress={() => { navigation.navigate("SignIn") }}>Sign up</Text>
         </View>
       </ScrollView>
     );
@@ -69,15 +69,18 @@ const styles = StyleSheet.create({
   },
 
   loginTextContainer: {
-    marginBottom: 30
+    marginBottom: 20
   },
 
   input: {
-    borderBottomWidth: 2,
-    borderBottomColor: "#58269e",
-    fontSize: 20,
-    height: 20,
-    marginTop:70
+    marginVertical:10,
+    paddingBottom:15,
+    borderStyle:'solid',
+    borderBottomColor:'#b734eb',
+    borderBottomWidth:1,
+    fontSize:20,
+    marginTop:20,
+    color:'black'
   },
 
   forgotPassword: {
@@ -92,7 +95,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 10,
-    marginVertical: 80,
+    marginVertical: 50,
   },
 
   buttonText: {

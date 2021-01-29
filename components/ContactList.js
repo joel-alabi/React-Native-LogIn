@@ -1,6 +1,6 @@
 import React from "react";
 import { View, FlatList } from "react-native";
-import Contact from "./components/Contact";
+import Contact from "./Contact";
 
 export default function ContactsList() {
   const contacts = [
